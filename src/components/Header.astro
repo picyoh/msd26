@@ -1,0 +1,52 @@
+---
+const { isDark } = Astro.props;
+---
+
+<header
+    class="bg-white/5 dark:bg-black/5 backdrop-blur-lg border-b border-white/10"
+>
+    <div class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <a class="w-6 h-6 text-purple-400" href="#"></a>
+                <span
+                    class="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text"
+                >
+                    Ma Souris D'ordinateur
+                </span>
+            </div>
+            <div class="flex items-center gap-8">
+                <nav>
+                    <ul class="flex items-center gap-8">
+                        <li>
+                            <a
+                                href="#approche-profilaire"
+                                class="text-gray-300 hover:text-white transition-colors"
+                                >Approche profilaire</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+                <button
+                    type="button"
+                    class="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                    aria-label={isDark
+                        ? "Activer le mode clair"
+                        : "Activer le mode sombre"}
+                >
+<!--                     {
+                        isDark ? (
+                            <Sun class="w-5 h-5" />
+                        ) : (
+                            <Moon class="w-5 h-5" />
+                        )
+                    } -->
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    
+</script>

@@ -1,7 +1,6 @@
 ---
 import Hero from "../components/Hero.astro";
-import FeatureCard from "../components/FeatureCard.astro";
-
+import Feature from "../components/Feature.astro";
 // TODO: ChevronRight
 // TODO: replace the setX things
 // TODO: handle dark mode
@@ -21,28 +20,12 @@ import FeatureCard from "../components/FeatureCard.astro";
       {!quizStarted && !quizCompleted && (
         <div class="container mx-auto px-4 py-12">
           <Hero />
-          
+          <Feature />
         </div>
       )}
 
       {quizStarted && !quizCompleted && (
-        <>
-          <Quiz 
-            onComplete={(results) => {
-              setResults(results);
-              setQuizCompleted(true);
-            }}
-          />
-          <div class="text-center mt-8">
-            <button
-              onClick={handleRestart}
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:bg-white/5 transition-colors"
-            >
-              <RotateCcw size={20} />
-              Recommencer le quiz
-            </button>
-          </div>
-        </>
+
       )}
 
       {quizCompleted && (

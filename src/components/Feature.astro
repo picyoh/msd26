@@ -1,0 +1,24 @@
+---
+import FeatureCard from "./FeatureCard.astro"
+---
+
+<div class="text-center max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8">Comment ça marche ?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <FeatureCard
+            number="1"
+            title="Répondez au quiz"
+            description="5 questions simples sur vos besoins"
+        />
+        <FeatureCard
+            number="2"
+            title="Analysez vos résultats"
+            description="Découvrez les souris recommandées"
+        />
+        <FeatureCard
+            number="3"
+            title="Faites votre choix"
+            description="Comparez et achetez en toute confiance"
+        />
+    </div>
+</div>

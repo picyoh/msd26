@@ -1,0 +1,337 @@
+---
+
+import React, { useState } from 'react';
+import { ChevronRight, Filter, ChevronLeft, ExternalLink, RotateCcw } from 'lucide-react';
+import Results from './Results';
+
+interface QuizProps {
+  onComplete: (answers: string[]) => void;
+}
+
+interface Question {
+  question: string;
+  options: { id: string; text: string }[];
+}
+
+const initialQuestions: Question[] = [
+  {
+    question: "Dans quel contexte utilisez-vous principalement votre souris ?",
+    options: [
+      { id: "a", text: "Gaming" },
+      { id: "b", text: "Bureautique" }
+    ]
+  },
+  {
+    question: "À quelle fréquence utilisez-vous votre ordinateur ?",
+    options: [
+      { id: "a", text: "Occasionnellement (moins de 2h/jour)" },
+      { id: "b", text: "Régulièrement (2-6h/jour)" },
+      { id: "c", text: "Intensivement (plus de 6h/jour)" }
+    ]
+  }
+];
+
+const gamingQuestion: Question = {
+  question: "Quel type de jeux jouez-vous principalement ?",
+  options: [
+    { id: "a", text: "FPS (Counter-Strike, Valorant, Call of Duty)" },
+    { id: "b", text: "MOBA (League of Legends, Dota 2)" },
+    { id: "c", text: "MMORPG" },
+    { id: "d", text: "GESTION/WARGAME" },
+    { id: "e", text: "BATTLE ROYALE (Fortnite, PUBG, Apex)" },
+    { id: "f", text: "SIMULATION (Euro Truck, Flight Simulator)" },
+    { id: "g", text: "SPORT (FIFA, NBA 2K)" },
+    { id: "h", text: "COURSE (F1, Gran Turismo)" },
+    { id: "i", text: "HACK'N'SLASH" }
+  ]
+};
+
+const gamingObjectiveQuestion: Question = {
+  question: "Quel est votre objectif gaming ?",
+  options: [
+    { id: "a", text: "Découverte" },
+    { id: "b", text: "Maintien et Progression" },
+    { id: "c", text: "Classement et E-sport" }
+  ]
+};
+
+const gamingHandQuestion: Question = {
+  question: "Quelle est votre préférence de main ?",
+  options: [
+    { id: "a", text: "Droitier" },
+    { id: "b", text: "Gaucher" },
+    { id: "c", text: "Ambidextre" }
+  ]
+};
+
+const officeQuestion: Question = {
+  question: "Pour quelle utilisation souhaitez-vous votre souris ?",
+  options: [
+    { id: "a", text: "Professionnel" },
+    { id: "b", text: "Loisir/Famille" },
+    { id: "c", text: "Médical" }
+  ]
+};
+
+const officeActivityQuestion: Question = {
+  question: "Combien d'heures par jour utilisez-vous votre ordinateur ?",
+  options: [
+    { id: "a", text: "Moins de 4 heures" },
+    { id: "b", text: "4-8 heures" },
+    { id: "c", text: "Plus de 8 heures" }
+  ]
+};
+
+const professionalActivityQuestion: Question = {
+  question: "Quelles sont vos activités principales ?",
+  options: [
+    { id: "a", text: "Pour les activités créatives" },
+    { id: "b", text: "Pour les activités administratives" },
+    { id: "c", text: "Pour les activités polyvalentes" }
+  ]
+};
+
+const medicalAspectQuestion: Question = {
+  question: "Sur quels aspects médicaux ?",
+  options: [
+    { id: "a", text: "Motricité" },
+    { id: "b", text: "Fatigue musculaire" },
+    { id: "c", text: "Particularité physique" }
+  ]
+};
+
+const familyPopulationQuestion: Question = {
+  question: "Quel type de population utilisera cette souris d'ordinateur ?",
+  options: [
+    { id: "a", text: "Une personne seul" },
+    { id: "b", text: "Un couple" },
+    { id: "c", text: "Une famille" }
+  ]
+};
+
+const gamingRefinedQuestions: Question[] = [
+  {
+    question: "Quelle est votre sensibilité de souris préférée ?",
+    options: [
+      { id: "a", text: "Sensibilité faible (précision)" },
+      { id: "b", text: "Sensibilité moyenne" },
+      { id: "c", text: "Sensibilité élevée (réactivité)" }
+    ]
+  },
+  {
+    question: "Préférez-vous une souris ?",
+    options: [
+      { id: "a", text: "Légère (moins de 80g)" },
+      { id: "b", text: "Moyenne (80-100g)" },
+      { id: "c", text: "Lourde (plus de 100g)" }
+    ]
+  },
+  {
+    question: "Quelle connectivité préférez-vous ?",
+    options: [
+      { id: "a", text: "Filaire (latence minimale)" },
+      { id: "b", text: "Sans fil (liberté de mouvement)" },
+      { id: "c", text: "Peu importe" }
+    ]
+  },
+  {
+    question: "Combien de boutons supplémentaires souhaitez-vous ?",
+    options: [
+      { id: "a", text: "Aucun (souris basique)" },
+      { id: "b", text: "2-4 boutons (standard gaming)" },
+      { id: "c", text: "5+ boutons (MMO/productivité)" }
+    ]
+  },
+  {
+    question: "L'éclairage RGB est-il important pour vous ?",
+    options: [
+      { id: "a", text: "Essentiel" },
+      { id: "b", text: "Appréciable mais pas indispensable" },
+      { id: "c", text: "Pas important" }
+    ]
+  }
+];
+
+const officeRefinedQuestions: Question[] = [
+  {
+    question: "Travaillez-vous souvent en déplacement ?",
+    options: [
+      { id: "a", text: "Oui, j'ai besoin de portabilité" },
+      { id: "b", text: "Parfois" },
+      { id: "c", text: "Non, toujours au même bureau" }
+    ]
+  },
+  {
+    question: "Avez-vous des problèmes ergonomiques ?",
+    options: [
+      { id: "a", text: "Oui, douleurs au poignet/main" },
+      { id: "b", text: "Parfois des tensions" },
+      { id: "c", text: "Aucun problème" }
+    ]
+  },
+  {
+    question: "Quelle est la taille de votre main ?",
+    options: [
+      { id: "a", text: "Petite (moins de 17cm)" },
+      { id: "b", text: "Moyenne (17-19cm)" },
+      { id: "c", text: "Grande (plus de 19cm)" }
+    ]
+  },
+  {
+    question: "Préférez-vous une souris silencieuse ?",
+    options: [
+      { id: "a", text: "Oui, c'est important" },
+      { id: "b", text: "Appréciable" },
+      { id: "c", text: "Peu importe" }
+    ]
+  },
+  {
+    question: "Utilisez-vous plusieurs écrans ?",
+    options: [
+      { id: "a", text: "Oui, configuration multi-écrans" },
+      { id: "b", text: "Parfois" },
+      { id: "c", text: "Non, un seul écran" }
+    ]
+  }
+];
+
+---
+
+function Quiz({ onComplete }: QuizProps) {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState<string[]>([]);
+  const [showRefinedQuestions, setShowRefinedQuestions] = useState(false);
+  const [showRefinedOption, setShowRefinedOption] = useState(false);
+
+  const getQuestions = () => {
+    let questions = [...initialQuestions];
+
+    if (answers[0] === "a") {
+      // Gaming path
+      questions = [
+        ...questions.slice(0, 2),
+        gamingQuestion,
+        gamingObjectiveQuestion,
+        gamingHandQuestion,
+        ...questions.slice(2)
+      ];
+      if (showRefinedQuestions) {
+        questions = [...questions, ...gamingRefinedQuestions];
+      }
+    } else if (answers[0] === "b") {
+      // Office path
+      questions = [
+        ...questions.slice(0, 2),
+        officeQuestion
+      ];
+
+      // Add specific follow-up questions based on office usage type
+      if (answers[2] === "a") {
+        // Professional
+        questions.push(professionalActivityQuestion);
+      } else if (answers[2] === "b") {
+        // Loisir/Famille
+        questions.push(familyPopulationQuestion);
+      } else if (answers[2] === "c") {
+        // Médical
+        questions.push(medicalAspectQuestion);
+      }
+
+      // Add the activity question as second follow-up
+      questions.push(officeActivityQuestion);
+
+      if (showRefinedQuestions) {
+        questions = [...questions, ...officeRefinedQuestions];
+      }
+    }
+    return questions;
+  };
+
+  const questions = getQuestions();
+
+  const handleAnswer = (answerId: string) => {
+    const newAnswers = [...answers, answerId];
+    setAnswers(newAnswers);
+
+    if (currentQuestion === questions.length - 1) {
+      if (!showRefinedQuestions) {
+        setShowRefinedOption(true);
+      } else {
+        onComplete(newAnswers);
+      }
+    } else {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const handleRefineSearch = () => {
+    setShowRefinedQuestions(true);
+    setShowRefinedOption(false);
+    const initialQuestionsCount = answers[0] === "a" || answers[0] === "b" ? 5 : initialQuestions.length;
+    setCurrentQuestion(initialQuestionsCount);
+  };
+
+  const progress = ((currentQuestion + 1) / questions.length) * 100;
+
+  return (
+    <div className="container mx-auto px-4 py-12 max-w-2xl">
+      <div className="mb-8">
+        <div className="h-2 bg-gray-700 rounded-full">
+          <div 
+            className="h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <p className="text-gray-400 mt-2">Question {currentQuestion + 1} sur {questions.length}</p>
+      </div>
+
+      {showRefinedOption ? (
+        <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8">
+          <h2 className="text-2xl font-bold mb-6">Voici vos premiers résultats</h2>
+          <p className="text-gray-400 mb-8">
+            Vous pouvez affiner votre recherche avec 5 questions supplémentaires pour des recommandations plus précises.
+          </p>
+
+          <button
+            onClick={handleRefineSearch}
+            className="w-full text-left px-6 py-4 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 transition-opacity flex items-center justify-between group mb-8"
+          >
+            <span className="flex items-center gap-2">
+              <Filter size={20} />
+              Affiner ma recherche
+            </span>
+            <ChevronRight className="opacity-100" />
+          </button>
+
+          <div className="mt-8">
+            <Results 
+              results={answers}
+              onRestart={() => {
+                setCurrentQuestion(0);
+                setAnswers([]);
+                setShowRefinedQuestions(false);
+                setShowRefinedOption(false);
+              }}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8">
+          <h2 className="text-2xl font-bold mb-6">{questions[currentQuestion].question}</h2>
+          <div className="space-y-4">
+            {questions[currentQuestion].options.map((option) => (
+              <button
+                key={option.id}
+                onClick={() => handleAnswer(option.id)}
+                className="w-full text-left px-6 py-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-between group"
+              >
+                <span>{option.text}</span>
+                <ChevronRight className="opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

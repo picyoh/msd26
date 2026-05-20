@@ -1,3 +1,4 @@
+---
 import React, { useState } from 'react';
 import { RotateCcw, ExternalLink, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -15,6 +16,7 @@ interface Mouse {
   features: string[];
   link: string;
 }
+---
 
 function Results({ results, onRestart }: ResultsProps) {
   const getRecommendedMice = (): Mouse[] => {

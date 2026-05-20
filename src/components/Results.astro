@@ -1,0 +1,394 @@
+import React, { useState } from 'react';
+import { RotateCcw, ExternalLink, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+
+interface ResultsProps {
+  results: string[];
+  onRestart: () => void;
+}
+
+interface Mouse {
+  name: string;
+  brand: string;
+  image: string;
+  price: string;
+  match: number;
+  features: string[];
+  link: string;
+}
+
+function Results({ results, onRestart }: ResultsProps) {
+  const getRecommendedMice = (): Mouse[] => {
+    const isGaming = results[0] === "a";
+    const frequency = results[1];
+    const usage = results[2];
+
+    if (isGaming) {
+      return [
+        {
+          name: "Logitech G Pro X Superlight",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "149€",
+          match: 95,
+          features: ["Ultra-légère (63g)", "Sans fil", "Capteur HERO 25K", "Ambidextre"],
+          link: "#"
+        },
+        {
+          name: "Razer Viper V2 Pro",
+          brand: "Razer",
+          image: "https://images.unsplash.com/photo-1586920740099-e3379b89c7e9?w=400&h=300&fit=crop",
+          price: "139€",
+          match: 92,
+          features: ["Poids plume (58g)", "Focus Pro 30K", "Switches optiques", "Autonomie 80h"],
+          link: "#"
+        },
+        {
+          name: "Glorious Model O",
+          brand: "Glorious",
+          image: "https://images.unsplash.com/photo-1563297007-0686b7003af7?w=400&h=300&fit=crop",
+          price: "59€",
+          match: 88,
+          features: ["Design ajouré", "RGB personnalisable", "Filaire", "Grip tape inclus"],
+          link: "#"
+        },
+        {
+          name: "SteelSeries Rival 600",
+          brand: "SteelSeries",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 90,
+          features: ["Capteur TrueMove Pro", "Dual zone weight system", "Sans fil", "Latence 1ms"],
+          link: "#"
+        },
+        {
+          name: "ASUS ROG Gladius III",
+          brand: "ASUS",
+          image: "https://images.unsplash.com/photo-1586920740099-e3379b89c7e9?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 87,
+          features: ["Capteur 36000 DPI", "Sans fil 2.4GHz", "8 boutons programmables", "Ergonomique"],
+          link: "#"
+        },
+        {
+          name: "Corsair Dark Core RGB",
+          brand: "Corsair",
+          image: "https://images.unsplash.com/photo-1563297007-0686b7003af7?w=400&h=300&fit=crop",
+          price: "69€",
+          match: 85,
+          features: ["RGB personnalisable", "Wireless + filaire", "Grip caoutchouc", "12000 DPI"],
+          link: "#"
+        }
+      ];
+    } else if (frequency === "b" && usage === "a") {
+      return [
+        {
+          name: "Microsoft Arc Mouse",
+          brand: "Microsoft",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "59€",
+          match: 94,
+          features: ["Design épuré Arc", "Bluetooth", "Ultra-portable", "Batterie 2 ans"],
+          link: "https://www.amazon.fr/Microsoft-Souris-Surface-Bluetooth-Platine/dp/B0748H383V"
+        },
+        {
+          name: "Logitech MX Anywhere 3",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 92,
+          features: ["Multi-dispositif", "Bluetooth + USB", "Rechargeable USB-C", "8 boutons"],
+          link: "https://www.amazon.fr/Logitech-Anywhere-Souris-Bluetooth-Windows/dp/B072BG9Z8W"
+        },
+        {
+          name: "Roccat Kone Pure Owl-Eye",
+          brand: "Roccat",
+          image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 89,
+          features: ["Ergonomique ambidextre", "Capteur Owl-Eye 12000 DPI", "Design premium", "Latence ultra-basse"],
+          link: "https://www.amazon.fr/Roccat-Kone-Souris-Gaming-remastered/dp/B07YCG26KZ"
+        },
+        {
+          name: "Logitech M720 Triathlon",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+          price: "49€",
+          match: 88,
+          features: ["3 appareils simultanés", "Bluetooth + 2.4GHz", "8 boutons", "Batterie 24 mois"],
+          link: "https://www.amazon.fr/Logitech-M720-Triathlon-Easy-Switch-P%C3%A9riph%C3%A9riques/dp/B01KZVQB42"
+        },
+        {
+          name: "Lenovo Thinkmouse Wireless",
+          brand: "Lenovo",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "29€",
+          match: 85,
+          features: ["Design épuré", "Sans fil 2.4GHz", "Batterie longue durée", "Compacte et légère"],
+          link: "#"
+        },
+        {
+          name: "Dell WM426 Wireless",
+          brand: "Dell",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "39€",
+          match: 84,
+          features: ["Récepteur USB nano", "Batterie 2 ans", "Design ergonomique", "Silencieuse"],
+          link: "#"
+        }
+      ];
+    } else if (frequency === "c" && usage === "a") {
+      return [
+        {
+          name: "Microsoft Precision Mouse",
+          brand: "Microsoft",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 97,
+          features: ["Rechargeable USB-C", "Bluetooth + filaire", "Précision optimale", "Batterie 6 mois"],
+          link: "https://www.amazon.fr/Microsoft-Souris-Précision-Édition-Surface/dp/B079DBK1ND"
+        },
+        {
+          name: "Apple Magic Mouse 2",
+          brand: "Apple",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 92,
+          features: ["Multi-touch surface", "Rechargeability", "Design épuré", "Compatible Mac/iPad"],
+          link: "https://www.amazon.fr/Apple-MK2E3ZM-A-Magic-Mouse/dp/B09BV7YYG3"
+        },
+        {
+          name: "Logitech MX Ergo Trackball",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop",
+          price: "99€",
+          match: 95,
+          features: ["Trackball ergonomique", "Angle ajustable", "Précision de défilement", "Charge USB-C"],
+          link: "https://www.amazon.fr/Logitech-910-005179-Trackball-Avanc%C3%A9e-Windows/dp/B074W227RK"
+        },
+        {
+          name: "Logitech MX Master 2S",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+          price: "99€",
+          match: 94,
+          features: ["Ergonomique premium", "Multi-appareils", "Molette MagSpeed", "8 boutons programmables"],
+          link: "https://www.amazon.fr/Logitech-Master-Souris-Bluetooth-Windows/dp/B071KZS3MF"
+        },
+        {
+          name: "3Dconnexion CadMouse Wireless",
+          brand: "3Dconnexion",
+          image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop",
+          price: "109€",
+          match: 96,
+          features: ["Ergonomique professionnel", "Bouton RadialMenu", "Sans fil 2.4GHz", "Design spécialisé CAO"],
+          link: "https://www.amazon.fr/3Dconnexion-CadMouse-Wireless-Ergonomique-Droitier/dp/B07SDGF956"
+        },
+        {
+          name: "Evoluent Vertical Mouse",
+          brand: "Evoluent",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 91,
+          features: ["Position verticale ergonomique", "Réduit la tension du poignet", "Filaire ou sans fil", "Design médicalement éprouvé"],
+          link: "#"
+        }
+      ];
+    } else {
+      return [
+        {
+          name: "Logitech MX Master 3S",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+          price: "119€",
+          match: 96,
+          features: ["Ergonomique", "Multi-dispositif", "Molette MagSpeed", "Silencieuse"],
+          link: "#"
+        },
+        {
+          name: "Microsoft Sculpt Ergonomic",
+          brand: "Microsoft",
+          image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop",
+          price: "69€",
+          match: 93,
+          features: ["Forme ergonomique", "Repose-pouce", "Sans fil", "Batterie longue durée"],
+          link: "#"
+        },
+        {
+          name: "Logitech MX Anywhere 3",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 90,
+          features: ["Compact", "Portable", "Multi-surface", "Rechargeable USB-C"],
+          link: "#"
+        },
+        {
+          name: "HP Wireless Mouse 280",
+          brand: "HP",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "35€",
+          match: 85,
+          features: ["Récepteur USB nano", "2.4GHz sans fil", "Batterie 18 mois", "Design compact"],
+          link: "#"
+        },
+        {
+          name: "Cherry MW 2310",
+          brand: "Cherry",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "45€",
+          match: 83,
+          features: ["Design minimaliste", "Récepteur USB", "Batterie longue durée", "Confortable pour tous"],
+          link: "#"
+        },
+        {
+          name: "Kensington ProFit Ergo",
+          brand: "Kensington",
+          image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 88,
+          features: ["Ergonomique professionnel", "Design en relief", "Sans fil 2.4GHz", "Contourage naturel"],
+          link: "#"
+        }
+      ];
+    }
+  };
+
+  const mice = getRecommendedMice();
+  const [currentIndex, setCurrentIndex] = useState(Math.floor(mice.length / 2));
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? mice.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === mice.length - 1 ? 0 : prev + 1));
+  };
+
+  const getVisibleIndices = () => {
+    const indices = [];
+    const itemsToShow = window.innerWidth < 768 ? 1 : 3;
+    const halfItems = Math.floor(itemsToShow / 2);
+
+    for (let i = -halfItems; i <= halfItems; i++) {
+      indices.push((currentIndex + i + mice.length) % mice.length);
+    }
+    return indices;
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-12 max-w-6xl">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+          Vos Recommandations
+        </h2>
+        <p className="text-gray-400 text-lg">
+          Basées sur votre profil, voici les souris qui correspondent le mieux à vos besoins
+        </p>
+      </div>
+
+      <div className="relative mb-12">
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 rounded-full hover:bg-white/10 transition-colors"
+          aria-label="Précédent"
+        >
+          <ChevronLeft size={28} className="text-blue-400" />
+        </button>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+          {getVisibleIndices().map((index) => {
+            const mouse = mice[index];
+            const isCenter = index === currentIndex;
+
+            return (
+              <div
+                key={index}
+                className={`transition-all duration-300 ${
+                  isCenter ? 'md:scale-110 md:z-20' : 'md:opacity-60'
+                }`}
+              >
+                <div
+                  className={`rounded-xl overflow-hidden backdrop-blur-lg border transition-all duration-300 ${
+                    isCenter
+                      ? 'bg-gradient-to-br from-blue-500/20 to-purple-600/20 border-blue-400/50 shadow-2xl shadow-blue-500/20'
+                      : 'bg-white/5 border-white/10 hover:bg-white/10'
+                  }`}
+                >
+                  <div className="relative">
+                    <img
+                      src={mouse.image}
+                      alt={mouse.name}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full flex items-center gap-1 ${
+                      isCenter
+                        ? 'bg-gradient-to-r from-blue-400 to-pink-500'
+                        : 'bg-gradient-to-r from-blue-500 to-purple-600'
+                    }`}>
+                      <Star size={16} fill="currentColor" />
+                      <span className="font-bold">{mouse.match}%</span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <div className="mb-2">
+                      <span className="text-sm text-gray-400">{mouse.brand}</span>
+                      <h3 className={`font-bold mb-2 ${isCenter ? 'text-2xl' : 'text-xl'}`}>
+                        {mouse.name}
+                      </h3>
+                    </div>
+
+                    <div className="mb-4">
+                      <span className={`font-bold ${isCenter ? 'text-3xl' : 'text-2xl'} text-blue-400`}>
+                        {mouse.price}
+                      </span>
+                    </div>
+
+                    <ul className={`space-y-2 mb-6 ${!isCenter && 'hidden md:block'}`}>
+                      {mouse.features.map((feature, idx) => (
+                        <li key={idx} className="text-sm text-gray-300 flex items-start">
+                          <span className="text-blue-400 mr-2">•</span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <a
+                      href={mouse.link}
+                      className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-lg transition-all ${
+                        isCenter
+                          ? 'bg-gradient-to-r from-blue-500 to-pink-500 hover:opacity-90 text-white'
+                          : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90'
+                      }`}
+                    >
+                      Voir les offres
+                      <ExternalLink size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 rounded-full hover:bg-white/10 transition-colors"
+          aria-label="Suivant"
+        >
+          <ChevronRight size={28} className="text-blue-400" />
+        </button>
+      </div>
+
+      <div className="text-center">
+        <button
+          onClick={onRestart}
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-gray-600 hover:bg-white/5 transition-colors"
+        >
+          <RotateCcw size={20} />
+          Recommencer le quiz
+        </button>
+      </div>
+    </div>
+  );
+}

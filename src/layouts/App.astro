@@ -1,6 +1,6 @@
 ---
+import Hero from "../components/Hero.astro";
 import FeatureCard from "../components/FeatureCard.astro";
-import  
 
 // TODO: ChevronRight
 // TODO: replace the setX things
@@ -16,46 +16,131 @@ import
 
 ---
 
-<div class="min-h-screen">
+<div class={`min-h-screen ${isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800' : 'bg-gradient-to-br from-[#1a1b2e] to-[#2d2d4d]'} text-white`}>
+      
       {!quizStarted && !quizCompleted && (
         <div class="container mx-auto px-4 py-12">
-          {/* Hero Section */}
-          <div class="text-center mb-16">
-            <h1 class="text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-              Trouvez Votre Souris Idéale
-            </h1>
-            <p class="text-xl text-gray-300 mb-8">
-              Découvrez la souris qui correspond parfaitement à vos besoins
-            </p>
+          <Hero />
+          
+        </div>
+      )}
+
+      {quizStarted && !quizCompleted && (
+        <>
+          <Quiz 
+            onComplete={(results) => {
+              setResults(results);
+              setQuizCompleted(true);
+            }}
+          />
+          <div class="text-center mt-8">
             <button
-              onClick={() => setQuizStarted(true)}
-              class="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity flex items-center gap-2 mx-auto"
+              onClick={handleRestart}
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:bg-white/5 transition-colors"
             >
-              Commencer le Quiz <ChevronRight size={20} />
+              <RotateCcw size={20} />
+              Recommencer le quiz
             </button>
           </div>
+        </>
+      )}
 
-          <div class="text-center max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Comment ça marche ?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <FeatureCard
-                number="1"
-                title="Répondez au quiz"
-                description="5 questions simples sur vos besoins"
-              />
-              <FeatureCard
-                number="2"
-                title="Analysez vos résultats"
-                description="Découvrez les souris recommandées"
-              />
-              <FeatureCard
-                number="3"
-                title="Faites votre choix"
-                description="Comparez et achetez en toute confiance"
-              />
+      {quizCompleted && (
+        <Results 
+          results={results}
+          onRestart={handleRestart}
+        />
+      )}
+
+      {/* Approche profilaire section */}
+      <section id="approche-profilaire" class="container mx-auto px-4 py-16 max-w-4xl">
+        <div class="bg-white/5 dark:bg-black/10 backdrop-blur-lg rounded-xl p-8">
+          <h2 class="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+            Une approche « Profilaire » ?
+          </h2>
+          
+          <div class="space-y-8 text-gray-300">
+            <div>
+              <h3 class="text-xl font-semibold text-white mb-4">L'objectif :</h3>
+              <p class="leading-relaxed">
+                L'objectif de l'approche "Profilaire" est d'éclairer l'utilisateur d'un produit en lui proposant les choix les plus pertinents de souris d'ordinateur au regard de sa propre utilisation. Le profil d'un utilisateur recoupe ses comportements d'utilisation, ses préférences, ses centres d'intérêts, avec les caractéristiques techniques des différentes souris. Pour établir les différents profils d'utilisateurs, nous avons identifié des critères déterminants et avons transposé ceux-ci en questions formant ainsi un arbre de choix présenté à chaque utilisateur.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white mb-4">La motivation :</h3>
+              <p class="leading-relaxed mb-4">
+                Vous vous posez sûrement la question du POURQUOI ? Quel est l'intérêt de proposer une approche de pré-choix selon le profil d'un utilisateur ? Actuellement, lorsque vous recherchez une nouvelle souris sur internet, les comparateurs prennent en compte principalement le prix, la popularité de la souris présente sur les plateformes marchandes et marginalement les caractéristiques techniques réelles de la souris d'ordinateur via les descriptifs constructeurs ou la réalisation de tests.
+              </p>
+              <p class="leading-relaxed mb-4">
+                Oui, les critères de coût et de notoriété sont importants et sont bien évidemment pris en compte dans notre approche. Néanmoins, la présentation restreinte à ceux-ci est destinée au plus grand nombre d'utilisateurs d'où une catégorisation des souris finalisée basée en fonction des fourchettes de prix. Avec notre approche, notre effort porte réellement sur la réponse à votre besoin, avec un service personnalisé, au travers d'une prise en compte de plus de critères permettant une présentation des souris ciblée, propre à votre profil.
+              </p>
+              <p class="leading-relaxed">
+                Pour bien saisir l'intérêt d'une approche "profilaire", revenons à l'origine d'un constat simple : le <strong class="text-purple-400">TEMPS</strong> est une ressource précieuse, non extensible. Lorsqu'une personne débute la recherche de sa souris idéale, elle passe logiquement par 3 étapes :
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+              <div class="bg-white/5 rounded-lg p-6 text-center">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+                  1
+                </div>
+                <h4 class="text-lg font-semibold text-white mb-2">Découverte</h4>
+                <p class="text-sm text-gray-400">Explorer le secteur des souris disponibles</p>
+              </div>
+              <div class="bg-white/5 rounded-lg p-6 text-center">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+                  2
+                </div>
+                <h4 class="text-lg font-semibold text-white mb-2">Analyse</h4>
+                <p class="text-sm text-gray-400">Comparer les informations avec ses attentes</p>
+              </div>
+              <div class="bg-white/5 rounded-lg p-6 text-center">
+                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-xl font-bold mb-4 mx-auto">
+                  3
+                </div>
+                <h4 class="text-lg font-semibold text-white mb-2">Décision</h4>
+                <p class="text-sm text-gray-400">Choisir la souris qui correspond le mieux</p>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-white mb-4">Appliquons maintenant ce processus avec le dispositif d'une approche profilaire :</h3>
+              
+              <div class="space-y-6">
+                <div class="border-l-4 border-blue-500 pl-6">
+                  <h4 class="text-lg font-semibold text-blue-400 mb-2">Étape de Découverte :</h4>
+                  <p class="leading-relaxed">
+                    L'arbre des choix du profil utilisateur réduit le temps passé à l'exploration de ce secteur.
+                  </p>
+                </div>
+                
+                <div class="border-l-4 border-purple-500 pl-6">
+                  <h4 class="text-lg font-semibold text-purple-400 mb-2">Étape d'Analyse :</h4>
+                  <p class="leading-relaxed">
+                    En complétant l'arbre des choix, vous créez un profil qui déclenche la proposition d'un groupe de souris pertinentes répondant à votre utilisation. La correspondance entre une souris et votre profil est synthétisée par un indicateur, le pourcentage de correspondance.
+                  </p>
+                </div>
+                
+                <div class="border-l-4 border-pink-500 pl-6">
+                  <h4 class="text-lg font-semibold text-pink-400 mb-2">Étape de décision :</h4>
+                  <p class="leading-relaxed">
+                    La prise de décision est naturellement plus simple car la détermination du profil de l'utilisateur permet l'adéquation entre le produit et le service attendu de celui-ci. Les critères plus subjectifs comme le design et le prix restent bien entendu entièrement de votre ressort.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg p-6 border border-blue-500/20">
+              <p class="leading-relaxed text-sm">
+                <strong class="text-white">Note :</strong> La forme de l'arbre des choix et la formulation des questions sont susceptibles d'évoluer car nous recherchons constamment les critères les plus adaptés afin d'affiner au mieux les profils. De même, l'intitulé des questions et leurs propositions évolueront au fur et à mesure pour deux raisons : tout d'abord l'actualisation des produits proposés et la visée d'une meilleure lisibilité des questions afin d'éviter des biais potentiels dus à la formulation des questions elle-même.
+              </p>
             </div>
           </div>
         </div>
+      </section>
+    </div>
+
 <script>
 import { quizStarted } from "../store/quizStore";
 import { quizCompleted } from "../store/quizStore";

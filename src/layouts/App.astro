@@ -1,11 +1,15 @@
 ---
+const {quizStarted, isDark, results, setResults, quizCompleted, setQuizCompleted } = Astro.props;
 import Hero from "../components/Hero.astro";
 import Feature from "../components/Feature.astro";
-import ApprProf from  "../components/AppPro.astro"
+import ApprProf from  "../components/AppPro.astro";
+import Results from "../components/Results.astro";
+import Quizz from "../components/Quizz.astro";
+// TODO: import RotateCcw
 // TODO: ChevronRight
 // TODO: replace the setX things
 // TODO: handle dark mode
-// TODO: create FeaturedCard
+// TODO: handleResart on script tag
  /*  const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved ? JSON.parse(saved) : false;
@@ -27,7 +31,7 @@ import ApprProf from  "../components/AppPro.astro"
 
       {quizStarted && !quizCompleted && (
         <>
-          <Quiz 
+          <Quizz
             onComplete={(results) => {
               setResults(results);
               setQuizCompleted(true);
@@ -35,7 +39,7 @@ import ApprProf from  "../components/AppPro.astro"
           />
           <div class="text-center mt-8">
             <button
-              onClick={handleRestart}
+              id="restartButton"
               class="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:bg-white/5 transition-colors"
             >
               <RotateCcw size={20} />
@@ -57,13 +61,20 @@ import ApprProf from  "../components/AppPro.astro"
     </div>
 
 <script>
-import { quizStarted } from "../store/quizStore";
-import { quizCompleted } from "../store/quizStore";
-import { results } from "../store/quizStore";
+  import { quizStarted } from "../store/quizStore";
+  import { quizCompleted } from "../store/quizStore";
+  import { results } from "../store/quizStore";
+
   const handleRestart = () => {
     quizStarted.set(false);
     quizCompleted.set(false);
     results.set([]);
   };
+  
+  const restartButton = document.querySelector("#restartButton");
+
+  restartButton?.addEventListener("click", (e)=>{
+    console.log("restart button")
+  });
 
 </script>

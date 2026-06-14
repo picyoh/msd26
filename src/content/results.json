@@ -1,0 +1,342 @@
+// isGaming
+{
+          name: "Logitech G Pro X Superlight",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "149€",
+          match: 95,
+          features: [
+        "Ultra-légère (63g)",
+        "Sans fil",
+        "Capteur HERO 25K",
+        "Ambidextre"
+    ],
+          link: "#"
+},
+{
+          name: "Razer Viper V2 Pro",
+          brand: "Razer",
+          image: "https://images.unsplash.com/photo-1586920740099-e3379b89c7e9?w=400&h=300&fit=crop",
+          price: "139€",
+          match: 92,
+          features: [
+        "Poids plume (58g)",
+        "Focus Pro 30K",
+        "Switches optiques",
+        "Autonomie 80h"
+    ],
+          link: "#"
+},
+{
+          name: "Glorious Model O",
+          brand: "Glorious",
+          image: "https://images.unsplash.com/photo-1563297007-0686b7003af7?w=400&h=300&fit=crop",
+          price: "59€",
+          match: 88,
+          features: [
+        "Design ajouré",
+        "RGB personnalisable",
+        "Filaire",
+        "Grip tape inclus"
+    ],
+          link: "#"
+},
+{
+          name: "SteelSeries Rival 600",
+          brand: "SteelSeries",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 90,
+          features: [
+        "Capteur TrueMove Pro",
+        "Dual zone weight system",
+        "Sans fil",
+        "Latence 1ms"
+    ],
+          link: "#"
+},
+{
+          name: "ASUS ROG Gladius III",
+          brand: "ASUS",
+          image: "https://images.unsplash.com/photo-1586920740099-e3379b89c7e9?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 87,
+          features: [
+        "Capteur 36000 DPI",
+        "Sans fil 2.4GHz",
+        "8 boutons programmables",
+        "Ergonomique"
+    ],
+          link: "#"
+},
+{
+          name: "Corsair Dark Core RGB",
+          brand: "Corsair",
+          image: "https://images.unsplash.com/photo-1563297007-0686b7003af7?w=400&h=300&fit=crop",
+          price: "69€",
+          match: 85,
+          features: [
+        "RGB personnalisable",
+        "Wireless + filaire",
+        "Grip caoutchouc",
+        "12000 DPI"
+    ],
+          link: "#"
+}
+];
+//    } else if (frequency === "b" && usage === "a") {
+{
+          name: "Microsoft Arc Mouse",
+          brand: "Microsoft",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "59€",
+          match: 94,
+          features: [
+    "Design épuré Arc",
+    "Bluetooth",
+    "Ultra-portable",
+    "Batterie 2 ans"
+],
+          link: "https://www.amazon.fr/Microsoft-Souris-Surface-Bluetooth-Platine/dp/B0748H383V"
+},
+{
+          name: "Logitech MX Anywhere 3",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 92,
+          features: [
+    "Multi-dispositif",
+    "Bluetooth + USB",
+    "Rechargeable USB-C",
+    "8 boutons"
+],
+          link: "https://www.amazon.fr/Logitech-Anywhere-Souris-Bluetooth-Windows/dp/B072BG9Z8W"
+},
+{
+          name: "Roccat Kone Pure Owl-Eye",
+          brand: "Roccat",
+          image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 89,
+          features: [
+    "Ergonomique ambidextre",
+    "Capteur Owl-Eye 12000 DPI",
+    "Design premium",
+    "Latence ultra-basse"
+],
+          link: "https://www.amazon.fr/Roccat-Kone-Souris-Gaming-remastered/dp/B07YCG26KZ"
+},
+{
+          name: "Logitech M720 Triathlon",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+          price: "49€",
+          match: 88,
+          features: [
+    "3 appareils simultanés",
+    "Bluetooth + 2.4GHz",
+    "8 boutons",
+    "Batterie 24 mois"
+],
+          link: "https://www.amazon.fr/Logitech-M720-Triathlon-Easy-Switch-P%C3%A9riph%C3%A9riques/dp/B01KZVQB42"
+},
+{
+          name: "Lenovo Thinkmouse Wireless",
+          brand: "Lenovo",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "29€",
+          match: 85,
+          features: [
+    "Design épuré",
+    "Sans fil 2.4GHz",
+    "Batterie longue durée",
+    "Compacte et légère"
+],
+          link: "#"
+},
+{
+          name: "Dell WM426 Wireless",
+          brand: "Dell",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "39€",
+          match: 84,
+          features: [
+    "Récepteur USB nano",
+    "Batterie 2 ans",
+    "Design ergonomique",
+    "Silencieuse"
+],
+          link: "#"
+}
+//    } else if (frequency === "c" && usage === "a") {
+{
+          name: "Microsoft Precision Mouse",
+          brand: "Microsoft",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 97,
+          features: [
+    "Rechargeable USB-C",
+    "Bluetooth + filaire",
+    "Précision optimale",
+    "Batterie 6 mois"
+],
+          link: "https://www.amazon.fr/Microsoft-Souris-Précision-Édition-Surface/dp/B079DBK1ND"
+},
+{
+          name: "Apple Magic Mouse 2",
+          brand: "Apple",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 92,
+          features: [
+    "Multi-touch surface",
+    "Rechargeability",
+    "Design épuré",
+    "Compatible Mac/iPad"
+],
+          link: "https://www.amazon.fr/Apple-MK2E3ZM-A-Magic-Mouse/dp/B09BV7YYG3"
+},
+{
+          name: "Logitech MX Ergo Trackball",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop",
+          price: "99€",
+          match: 95,
+          features: [
+    "Trackball ergonomique",
+    "Angle ajustable",
+    "Précision de défilement",
+    "Charge USB-C"
+],
+          link: "https://www.amazon.fr/Logitech-910-005179-Trackball-Avanc%C3%A9e-Windows/dp/B074W227RK"
+},
+{
+          name: "Logitech MX Master 2S",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+          price: "99€",
+          match: 94,
+          features: [
+    "Ergonomique premium",
+    "Multi-appareils",
+    "Molette MagSpeed",
+    "8 boutons programmables"
+],
+          link: "https://www.amazon.fr/Logitech-Master-Souris-Bluetooth-Windows/dp/B071KZS3MF"
+},
+{
+          name: "3Dconnexion CadMouse Wireless",
+          brand: "3Dconnexion",
+          image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop",
+          price: "109€",
+          match: 96,
+          features: [
+    "Ergonomique professionnel",
+    "Bouton RadialMenu",
+    "Sans fil 2.4GHz",
+    "Design spécialisé CAO"
+],
+          link: "https://www.amazon.fr/3Dconnexion-CadMouse-Wireless-Ergonomique-Droitier/dp/B07SDGF956"
+},
+{
+          name: "Evoluent Vertical Mouse",
+          brand: "Evoluent",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 91,
+          features: [
+    "Position verticale ergonomique",
+    "Réduit la tension du poignet",
+    "Filaire ou sans fil",
+    "Design médicalement éprouvé"
+],
+          link: "#"
+}
+//    } else {
+{
+          name: "Logitech MX Master 3S",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=300&fit=crop",
+          price: "119€",
+          match: 96,
+          features: [
+    "Ergonomique",
+    "Multi-dispositif",
+    "Molette MagSpeed",
+    "Silencieuse"
+],
+          link: "#"
+},
+{
+          name: "Microsoft Sculpt Ergonomic",
+          brand: "Microsoft",
+          image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop",
+          price: "69€",
+          match: 93,
+          features: [
+    "Forme ergonomique",
+    "Repose-pouce",
+    "Sans fil",
+    "Batterie longue durée"
+],
+          link: "#"
+},
+{
+          name: "Logitech MX Anywhere 3",
+          brand: "Logitech",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "89€",
+          match: 90,
+          features: [
+    "Compact",
+    "Portable",
+    "Multi-surface",
+    "Rechargeable USB-C"
+],
+          link: "#"
+},
+{
+          name: "HP Wireless Mouse 280",
+          brand: "HP",
+          image: "https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop",
+          price: "35€",
+          match: 85,
+          features: [
+    "Récepteur USB nano",
+    "2.4GHz sans fil",
+    "Batterie 18 mois",
+    "Design compact"
+],
+          link: "#"
+},
+{
+          name: "Cherry MW 2310",
+          brand: "Cherry",
+          image: "https://images.unsplash.com/photo-1618472607539-e38465ced110?w=400&h=300&fit=crop",
+          price: "45€",
+          match: 83,
+          features: [
+    "Design minimaliste",
+    "Récepteur USB",
+    "Batterie longue durée",
+    "Confortable pour tous"
+],
+          link: "#"
+},
+{
+          name: "Kensington ProFit Ergo",
+          brand: "Kensington",
+          image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&h=300&fit=crop",
+          price: "79€",
+          match: 88,
+          features: [
+    "Ergonomique professionnel",
+    "Design en relief",
+    "Sans fil 2.4GHz",
+    "Contourage naturel"
+],
+          link: "#"
+}
+}

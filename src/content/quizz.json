@@ -1,0 +1,181 @@
+const initialQuestions: Question[] = [
+  {
+    question: "Dans quel contexte utilisez-vous principalement votre souris ?",
+    options: [
+      { id: "a", text: "Gaming" },
+      { id: "b", text: "Bureautique" }
+    ]
+  },
+  {
+    question: "À quelle fréquence utilisez-vous votre ordinateur ?",
+    options: [
+      { id: "a", text: "Occasionnellement (moins de 2h/jour)" },
+      { id: "b", text: "Régulièrement (2-6h/jour)" },
+      { id: "c", text: "Intensivement (plus de 6h/jour)" }
+    ]
+  }
+];
+
+const gamingQuestion: Question = {
+  question: "Quel type de jeux jouez-vous principalement ?",
+  options: [
+    { id: "a", text: "FPS (Counter-Strike, Valorant, Call of Duty)" },
+    { id: "b", text: "MOBA (League of Legends, Dota 2)" },
+    { id: "c", text: "MMORPG" },
+    { id: "d", text: "GESTION/WARGAME" },
+    { id: "e", text: "BATTLE ROYALE (Fortnite, PUBG, Apex)" },
+    { id: "f", text: "SIMULATION (Euro Truck, Flight Simulator)" },
+    { id: "g", text: "SPORT (FIFA, NBA 2K)" },
+    { id: "h", text: "COURSE (F1, Gran Turismo)" },
+    { id: "i", text: "HACK'N'SLASH" }
+  ]
+};
+
+const gamingObjectiveQuestion: Question = {
+  question: "Quel est votre objectif gaming ?",
+  options: [
+    { id: "a", text: "Découverte" },
+    { id: "b", text: "Maintien et Progression" },
+    { id: "c", text: "Classement et E-sport" }
+  ]
+};
+
+const gamingHandQuestion: Question = {
+  question: "Quelle est votre préférence de main ?",
+  options: [
+    { id: "a", text: "Droitier" },
+    { id: "b", text: "Gaucher" },
+    { id: "c", text: "Ambidextre" }
+  ]
+};
+
+const officeQuestion: Question = {
+  question: "Pour quelle utilisation souhaitez-vous votre souris ?",
+  options: [
+    { id: "a", text: "Professionnel" },
+    { id: "b", text: "Loisir/Famille" },
+    { id: "c", text: "Médical" }
+  ]
+};
+
+const officeActivityQuestion: Question = {
+  question: "Combien d'heures par jour utilisez-vous votre ordinateur ?",
+  options: [
+    { id: "a", text: "Moins de 4 heures" },
+    { id: "b", text: "4-8 heures" },
+    { id: "c", text: "Plus de 8 heures" }
+  ]
+};
+
+const professionalActivityQuestion: Question = {
+  question: "Quelles sont vos activités principales ?",
+  options: [
+    { id: "a", text: "Pour les activités créatives" },
+    { id: "b", text: "Pour les activités administratives" },
+    { id: "c", text: "Pour les activités polyvalentes" }
+  ]
+};
+
+const medicalAspectQuestion: Question = {
+  question: "Sur quels aspects médicaux ?",
+  options: [
+    { id: "a", text: "Motricité" },
+    { id: "b", text: "Fatigue musculaire" },
+    { id: "c", text: "Particularité physique" }
+  ]
+};
+
+const familyPopulationQuestion: Question = {
+  question: "Quel type de population utilisera cette souris d'ordinateur ?",
+  options: [
+    { id: "a", text: "Une personne seul" },
+    { id: "b", text: "Un couple" },
+    { id: "c", text: "Une famille" }
+  ]
+};
+
+const gamingRefinedQuestions: Question[] = [
+  {
+    question: "Quelle est votre sensibilité de souris préférée ?",
+    options: [
+      { id: "a", text: "Sensibilité faible (précision)" },
+      { id: "b", text: "Sensibilité moyenne" },
+      { id: "c", text: "Sensibilité élevée (réactivité)" }
+    ]
+  },
+  {
+    question: "Préférez-vous une souris ?",
+    options: [
+      { id: "a", text: "Légère (moins de 80g)" },
+      { id: "b", text: "Moyenne (80-100g)" },
+      { id: "c", text: "Lourde (plus de 100g)" }
+    ]
+  },
+  {
+    question: "Quelle connectivité préférez-vous ?",
+    options: [
+      { id: "a", text: "Filaire (latence minimale)" },
+      { id: "b", text: "Sans fil (liberté de mouvement)" },
+      { id: "c", text: "Peu importe" }
+    ]
+  },
+  {
+    question: "Combien de boutons supplémentaires souhaitez-vous ?",
+    options: [
+      { id: "a", text: "Aucun (souris basique)" },
+      { id: "b", text: "2-4 boutons (standard gaming)" },
+      { id: "c", text: "5+ boutons (MMO/productivité)" }
+    ]
+  },
+  {
+    question: "L'éclairage RGB est-il important pour vous ?",
+    options: [
+      { id: "a", text: "Essentiel" },
+      { id: "b", text: "Appréciable mais pas indispensable" },
+      { id: "c", text: "Pas important" }
+    ]
+  }
+];
+
+const officeRefinedQuestions: Question[] = [
+  {
+    question: "Travaillez-vous souvent en déplacement ?",
+    options: [
+      { id: "a", text: "Oui, j'ai besoin de portabilité" },
+      { id: "b", text: "Parfois" },
+      { id: "c", text: "Non, toujours au même bureau" }
+    ]
+  },
+  {
+    question: "Avez-vous des problèmes ergonomiques ?",
+    options: [
+      { id: "a", text: "Oui, douleurs au poignet/main" },
+      { id: "b", text: "Parfois des tensions" },
+      { id: "c", text: "Aucun problème" }
+    ]
+  },
+  {
+    question: "Quelle est la taille de votre main ?",
+    options: [
+      { id: "a", text: "Petite (moins de 17cm)" },
+      { id: "b", text: "Moyenne (17-19cm)" },
+      { id: "c", text: "Grande (plus de 19cm)" }
+    ]
+  },
+  {
+    question: "Préférez-vous une souris silencieuse ?",
+    options: [
+      { id: "a", text: "Oui, c'est important" },
+      { id: "b", text: "Appréciable" },
+      { id: "c", text: "Peu importe" }
+    ]
+  },
+  {
+    question: "Utilisez-vous plusieurs écrans ?",
+    options: [
+      { id: "a", text: "Oui, configuration multi-écrans" },
+      { id: "b", text: "Parfois" },
+      { id: "c", text: "Non, un seul écran" }
+    ]
+  }
+];
